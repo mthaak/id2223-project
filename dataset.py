@@ -1,6 +1,7 @@
 """A generic module to read data."""
-import numpy
 import collections
+
+import numpy
 from tensorflow.python.framework import dtypes
 
 
@@ -72,8 +73,8 @@ def read_data_sets(train_dir, fake_data=False, one_hot=False,
     num_test = 1000
 
     all_images = numpy.load('./npy/grey.npy')
-    all_images = all_images.reshape(all_images.shape[0],
-        all_images.shape[1], all_images.shape[2], 3)
+    # all_images = all_images.reshape(all_images.shape[0],
+    #     all_images.shape[1], all_images.shape[2], 1)
 
     train_labels_original = numpy.load('./npy/label.npy')
     all_labels = numpy.asarray(range(0, len(train_labels_original)))

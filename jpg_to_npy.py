@@ -1,9 +1,9 @@
 import glob
 
-from skimage import io
 import numpy as np
+from skimage import io
 
-images_files = glob.glob('data/*.jpg')
+image_files = glob.glob('data/*.jpg')
 
 n = len(image_files)
 height = 227
@@ -13,8 +13,8 @@ output_filename = 'images.npy'
 
 images = np.empty((n, height, width, channels))
 
-for i, images_file in enumerate(images_files):
-    image_data = io.imread(images_file)
+for i, image_file in enumerate(image_files):
+    image_data = io.imread(image_file)
     images[i] = image_data
 
 np.save(output_filename, images)
