@@ -18,16 +18,17 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 
-def create_npy(input_filepath, output_dir):
-    data = np.loadtxt(input_filepath, dtype=str, delimiter=',')
-    n = len(data)
+def create_npy_files(input_filepath, output_dir):
+    print(input_filepath)
 
-    s = 50
-    n = s
+    # Get data from file
+    input_file = open(input_filepath, encoding='utf8')
+    data = np.loadtxt(input_file, dtype=str, delimiter=',')
+    n = len(data)
 
     # Create images array
     images = np.empty((n, height, width, channels), dtype=np.float16)
-    for i, image_file in enumerate(data[:n, 0]):
+    for i, image_file in enumerate(data[:, 0]):
         image = io.imread(wikiart_dir + '/' + image_file)
         resized_image = transform.resize(image, (height, width))
         images[i] = resized_image
@@ -35,7 +36,7 @@ def create_npy(input_filepath, output_dir):
         print("({0}/{1})".format(i + 1, n))
 
     # Create labels array
-    labels = data[:, 1]
+    labels = (data[:, 1]).astype(np.uint16)
 
     input_filename = os.path.basename(input_filepath).split('.')[0]
 
@@ -48,9 +49,9 @@ def create_npy(input_filepath, output_dir):
     np.save(output_labels_filepath, labels)
 
 
-# create_npy(input_dir + '/artist_train.csv', output_dir)
-create_npy(input_dir + '/artist_val.csv', output_dir)
-# create_npy(input_dir + '/genre_train.csv', output_dir)
-# create_npy(input_dir + '/genre_val.csv', output_dir)
-# create_npy(input_dir + '/style_train.csv', output_dir)
-# create_npy(input_dir + '/style_val.csv', output_dir)
+create_npy_files(input_dir + '/artist_train.csv', output_dir)
+create_npy_files(input_dir + '/artist_val.csv', output_dir)
+create_npy_files(input_dir + '/genre_train.csv', output_dir)
+create_npy_files(input_dir + '/genre_val.csv', output_dir)
+create_npy_files(input_dir + '/style_train.csv', output_dir)
+create_npy_files(input_dir + '/style_val.csv', output_dir)
