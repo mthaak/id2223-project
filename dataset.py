@@ -55,10 +55,10 @@ class DataSet(object):
 
 
 def read_data_sets(class_, one_hot=False):
-    train_images = numpy.load('data/npy/{0}_train_images.npy'.format(class_))
-    train_labels = numpy.load('data/npy/{0}_train_labels.npy'.format(class_))
-    test_images = numpy.load('data/npy/{0}_val_images.npy'.format(class_))
-    test_labels = numpy.load('data/npy/{0}_val_labels.npy'.format(class_))
+    train_images = numpy.load('data/color2/{0}_train_images.npy'.format(class_))
+    train_labels = numpy.load('data/color2/{0}_train_labels.npy'.format(class_))
+    test_images = numpy.load('data/color2/{0}_val_images.npy'.format(class_))
+    test_labels = numpy.load('data/color2/{0}_val_labels.npy'.format(class_))
 
     if one_hot:
         num_classes = {'artist': 23, 'genre': 10, 'style': 27}[class_]

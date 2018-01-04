@@ -13,6 +13,7 @@ if not os.path.exists(output_dirname):
 
 
 def make_sample(input_filename, output_filename):
+    print(input_filename)
     data = np.loadtxt(input_filename, dtype=str)
     np.random.shuffle(data)
     sample_size = int(sample_frac * len(data))
@@ -21,14 +22,14 @@ def make_sample(input_filename, output_filename):
 
 
 # Create samples
-make_sample(input_dirname + '/artist_train.csv', output_dirname + '/artist_train.csv')
-make_sample(input_dirname + '/artist_val.csv', output_dirname + '/artist_val.csv')
-make_sample(input_dirname + '/genre_train.csv', output_dirname + '/genre_train.csv')
-make_sample(input_dirname + '/genre_val.csv', output_dirname + '/genre_val.csv')
+# make_sample(input_dirname + '/artist_train.csv', output_dirname + '/artist_train.csv')
+# make_sample(input_dirname + '/artist_val.csv', output_dirname + '/artist_val.csv')
+# make_sample(input_dirname + '/genre_train.csv', output_dirname + '/genre_train.csv')
+# make_sample(input_dirname + '/genre_val.csv', output_dirname + '/genre_val.csv')
 make_sample(input_dirname + '/style_train.csv', output_dirname + '/style_train.csv')
 make_sample(input_dirname + '/style_val.csv', output_dirname + '/style_val.csv')
 
 # Copy class files
-shutil.copy(input_dirname + '/artist_class.txt', output_dirname)
-shutil.copy(input_dirname + '/genre_class.txt', output_dirname)
+# shutil.copy(input_dirname + '/artist_class.txt', output_dirname)
+# shutil.copy(input_dirname + '/genre_class.txt', output_dirname)
 shutil.copy(input_dirname + '/style_class.txt', output_dirname)

@@ -173,5 +173,6 @@ venv.bak/
 
 # Data files
 data/wikiart/*
-data/npy/*
+*.npy
 *.zip
+*.tfrecords
